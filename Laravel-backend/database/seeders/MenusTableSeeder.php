@@ -9,7 +9,7 @@ class MenusTableSeeder extends Seeder
 {
     public function run()
     {
-        // 20件のメニューを作成
-        Menu::factory(20)->create();
+        // 10件のメニューを作成
+        Menu::factory(10)->create();
     }
 }
