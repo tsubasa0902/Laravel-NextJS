@@ -3,46 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Menu;
+use App\Http\Requests\MenuRequest;
 
 class MenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        //メニュー一覧を取得
+        $menu = Menu::all();
+        return response()->json($menu, 200);
+    }
+    public function store(MenuRequest $request)
+    {
+        // バリデーションの実行
+        $validated = $request->validated();
+
+        $menu = Menu::create($validated);
+        return response()->json(['message' => '登録が完了しました'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show($id)
     {
-        //
+        $menu = Menu::findOrFail($id);
+        return response()->json($menu, 200, [], JSON_UNESCAPED_UNICODE);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(MenuRequest $request, $id)
     {
-        //
+        $menu = Menu::findOrFail($id);
+        // バリデーションの実行
+        $validated = $request->validated();
+        $menu->update($validated);
+        return response()->json(['message' => '更新が完了しました'], 200, [], JSON_UNESCAPED_UNICODE);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $menu = Menu::findOrFail($id);
+        $menu->delete();
+        return response()->json(['message' => '削除が完了しました'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 }
