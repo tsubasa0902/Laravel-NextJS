@@ -14,7 +14,6 @@ class Reservation extends Model
         'user_id',
         'status_flags',
         'reservation_number',
-        'reservation_date',
-        'reservation_time'
+        'reservation_datetime',
     ];
 }
