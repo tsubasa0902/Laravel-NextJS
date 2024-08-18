@@ -26,6 +26,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'role' => 'user',
             'email' => $this->faker->unique()->safeEmail, // ユニークなメールアドレスを生成
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // パスワードのハッシュ化
