@@ -2,47 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Models\Schedule;
+use App\Http\Requests\ScheduleRequest;
 class ScheduleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $schedules = Schedule::all();
+        return response()->json($schedules, 200);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(ScheduleRequest $request)
     {
-        //
+        $validated = $request->validated();
+        Schedule::create($validated);
+        return response()->json(['message' => '登録が完了しました',], 200, [], JSON_UNESCAPED_UNICODE);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $reservation = Schedule::findOrFail($id);
+        return response()->json($reservation, 200);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(ScheduleRequest $request, $id)
     {
-        //
+        $reservation = Schedule::findOrFail($id);
+        $validated = $request->validated();
+        $reservation->update($validated);
+
+        return response()->json(['message' => '更新が完了しました',], 200, [], JSON_UNESCAPED_UNICODE);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $reservation = Schedule::findOrFail($id);
+        $reservation->delete();
+        return response()->json(['message' => '削除が完了しました'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 }
