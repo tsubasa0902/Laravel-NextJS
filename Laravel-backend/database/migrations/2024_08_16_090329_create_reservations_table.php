@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('status_flags')->default(0);
             $table->date('reservation_date');
             $table->time('reservation_time');
+            $table->softDeletes(); // 論理削除用のdeleted_atカラムを追加
             $table->timestamps();
         });
     }

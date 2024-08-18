@@ -16,8 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->integer('duration'); // in minutes
-            $table->decimal('price', 8, 2);
+            $table->integer('duration');
+            $table->integer('price')->unsigned();
+            $table->softDeletes(); // 論理削除用のdeleted_atカラムを追加
             $table->timestamps();
         });
     }

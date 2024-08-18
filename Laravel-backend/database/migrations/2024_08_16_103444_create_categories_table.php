@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->softDeletes(); // 論理削除用のdeleted_atカラムを追加
             $table->timestamps();
         });
     }
