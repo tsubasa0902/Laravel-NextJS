@@ -10,16 +10,13 @@ class MenuController extends Controller
 {
     public function index()
     {
-        //メニュー一覧を取得
         $menu = Menu::all();
         return response()->json($menu, 200);
     }
     public function store(MenuRequest $request)
     {
-        // バリデーションの実行
         $validated = $request->validated();
-
-        $menu = Menu::create($validated);
+        Menu::create($validated);
         return response()->json(['message' => '登録が完了しました'], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
@@ -31,7 +28,6 @@ class MenuController extends Controller
     public function update(MenuRequest $request, $id)
     {
         $menu = Menu::findOrFail($id);
-        // バリデーションの実行
         $validated = $request->validated();
         $menu->update($validated);
         return response()->json(['message' => '更新が完了しました'], 200, [], JSON_UNESCAPED_UNICODE);
