@@ -17,7 +17,8 @@ class ReservationRequest extends FormRequest
     {
         return [
             'menu_id' => 'required',
-            'reservation_datetime' => 'required|date',
+            'reservation_date' => 'required|date',
+            'reservation_time' => 'required|date_format:H:i',
         ];
     }
 
@@ -25,8 +26,10 @@ class ReservationRequest extends FormRequest
     {
         return [
             'menu_id.required' => 'メニューは必須です',
-            'reservation_datetime.required' => '予約日は必須です',
-            'reservation_datetime.date' => '予約日は有効な日付形式で入力してください',
+            'reservation_date.required' => '予約日は必須です',
+            'reservation_date.date' => '有効な日付を入力してください',
+            'reservation_time.required' => '予約時間は必須です',
+            'reservation_time.date_format' => '有効な予約時間を入力してください',
         ];
     }
     protected function failedValidation(Validator $validator)

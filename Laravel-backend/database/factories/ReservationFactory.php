@@ -23,7 +23,8 @@ class ReservationFactory extends Factory
             'menu_id' => \App\Models\Menu::factory(), // メニューファクトリを使用して関連メニューを生成
             'reservation_number' => date('Ymd') . '-' . Str::upper(Str::random(6)), // 予約番号を生成
             'status_flags' => 0, // デフォルトのステータスフラグ
-            'reservation_datetime' => $this->faker->dateTimeBetween('now', '+1 week')->format('Y-m-d H:i:s'), // 現在から1週間以内のランダムな日時を生成
+            'reservation_date' => $this->faker->date(), // ランダムな日付を生成
+            'reservation_time' => $this->faker->time(), // ランダムな時間を生成
         ];
     }
 }
