@@ -12,11 +12,11 @@ class MenuFactory extends Factory
     public function definition()
     {
         return [
-            'category_id' => \App\Models\Category::factory(), // 関連するカテゴリを生成
+            'category_id' => \App\Models\Category::factory(),
             'name' => $this->faker->word,
             'description' => $this->faker->sentence,
-            'duration' => $this->faker->numberBetween(30, 120), // 30〜120分のランダムな時間
-            'price' => $this->faker->randomFloat(2, 10, 100), // 10.00〜100.00のランダムな価格
+            'duration' => $this->faker->numberBetween(30, 120),
+            'price' => $this->faker->randomFloat(2, 10, 100),
         ];
     }
 }

@@ -13,7 +13,7 @@ class SchedulesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        // 20件のスケジュールデータを作成
-        Schedule::factory()->count(20)->create();
+        // 10件のスケジュールデータを作成
+        Schedule::factory()->count(10)->create();
     }
 }

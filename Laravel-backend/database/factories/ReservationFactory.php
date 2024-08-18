@@ -19,12 +19,12 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => \App\Models\User::factory(), // ユーザーファクトリを使用して関連ユーザーを生成
-            'menu_id' => \App\Models\Menu::factory(), // メニューファクトリを使用して関連メニューを生成
+            'user_id' => \App\Models\User::factory(),
+            'menu_id' => \App\Models\Menu::factory(),
             'reservation_number' => date('Ymd') . '-' . Str::upper(Str::random(6)), // 予約番号を生成
-            'status_flags' => 0, // デフォルトのステータスフラグ
-            'reservation_date' => $this->faker->date(), // ランダムな日付を生成
-            'reservation_time' => $this->faker->time(), // ランダムな時間を生成
+            'status_flags' => 0,
+            'reservation_date' => $this->faker->date(),
+            'reservation_time' => $this->faker->time(),
         ];
     }
 }

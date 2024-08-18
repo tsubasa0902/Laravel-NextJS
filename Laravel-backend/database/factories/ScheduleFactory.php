@@ -18,12 +18,12 @@ class ScheduleFactory extends Factory
     public function definition(): array
     {
         return [
-            'type' => $this->faker->randomElement(['weekday', 'holiday', 'custom']),
-            'date' => $this->faker->optional()->date(), // 50%の確率でNULL
-            'day_of_week' => $this->faker->optional()->dayOfWeek, // 50%の確率でNULL
-            'start_time' => '09:00', // 営業開始時間
-            'end_time' => '18:00', // 営業終了時間
-            'max_reservations_per_hour' => 2, // 1時間あたりの最大予約枠
+            'type' => $this->faker->numberBetween(0, 3),
+            'date' => $this->faker->optional()->date(),
+            'day_of_week' => $this->faker->numberBetween(0, 6),
+            'start_time' => '09:00',
+            'end_time' => '18:00',
+            'max_reservations_per_hour' => 2,
         ];
     }
 }
