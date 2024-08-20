@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schedules', function (Blueprint $table) {
+         Schema::create('operating_hours', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('type')->nullable();
-            $table->date('date')->nullable();
-            $table->tinyInteger('day_of_week')->unsigned();
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
-            $table->integer('max_reservations_per_hour')->default(0);
+            $table->unsignedBigInteger('office_id');
+            $table->tinyInteger('day_of_week');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('operating_hours');
     }
 };

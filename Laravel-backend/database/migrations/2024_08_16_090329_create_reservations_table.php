@@ -15,12 +15,16 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('menu_id');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->unsignedBigInteger('office_id');
+            $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
             $table->string('reservation_number');
             $table->integer('status_flags')->default(0);
             $table->date('reservation_date');
             $table->time('reservation_time');
-            $table->softDeletes(); // 論理削除用のdeleted_atカラムを追加
+            $table->softDeletes();
             $table->timestamps();
         });
     }

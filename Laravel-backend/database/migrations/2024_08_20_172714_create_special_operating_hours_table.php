@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('special_operating_hours', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
+            $table->unsignedBigInteger('office_id');
+            $table->date('special_date');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('special_operating_hours');
     }
 };

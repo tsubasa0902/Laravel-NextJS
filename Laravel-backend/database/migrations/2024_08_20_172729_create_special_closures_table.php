@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('special_closures', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->integer('duration');
-            $table->integer('price')->unsigned();
-            $table->softDeletes(); // 論理削除用のdeleted_atカラムを追加
+            $table->unsignedBigInteger('office_id');
+            $table->date('closure_date');
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('special_closures');
     }
 };
