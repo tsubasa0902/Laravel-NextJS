@@ -17,4 +17,16 @@ class Reservation extends Model
         'reservation_date',
         'reservation_time',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
+    public function office()
+    {
+        return $this->belongsTo(Office::class);
+    }
 }
