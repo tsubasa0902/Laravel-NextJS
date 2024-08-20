@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MenuFactory extends Factory
 {
-    protected $model = Menu::class;
-
     public function definition()
     {
         return [
+            'office_id' => \App\Models\Office::factory(),
             'category_id' => \App\Models\Category::factory(),
             'name' => $this->faker->word,
             'description' => $this->faker->sentence,

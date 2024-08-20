@@ -7,9 +7,11 @@ use App\Models\Menu;
 
 class MenusTableSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run()
     {
-        // 10件のメニューを作成
-        Menu::factory(10)->create();
+        Menu::factory(5)->create();
     }
 }

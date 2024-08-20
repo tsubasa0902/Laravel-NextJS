@@ -7,9 +7,11 @@ use App\Models\Category;
 
 class CategoriesTableSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run()
     {
-        // 5件のカテゴリを作成
         Category::factory(5)->create();
     }
 }

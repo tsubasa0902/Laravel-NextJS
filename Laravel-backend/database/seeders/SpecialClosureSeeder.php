@@ -4,15 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Reservation;
+use App\Models\SpecialClosure;
 
-class ReservationsTableSeeder extends Seeder
+class SpecialClosureSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
-     */
-    public function run(): void
+     */    public function run(): void
     {
-        Reservation::factory(5)->create();
+        SpecialClosure::factory(5)->create();
     }
 }

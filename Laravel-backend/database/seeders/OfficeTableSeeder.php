@@ -4,15 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Reservation;
+use App\Models\Office;
 
-class ReservationsTableSeeder extends Seeder
+class OfficeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Reservation::factory(5)->create();
+        // Office::factory(1)->create();
     }
 }

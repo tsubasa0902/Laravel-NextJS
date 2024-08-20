@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             ReservationsTableSeeder::class,
             CategoriesTableSeeder::class,
             MenusTableSeeder::class,
-            SchedulesTableSeeder::class,
+            OperatingHourSeeder::class,
+            SpecialOperatingHourSeeder::class,
+            SpecialClosureSeeder::class,
         ]);
     }
 }
